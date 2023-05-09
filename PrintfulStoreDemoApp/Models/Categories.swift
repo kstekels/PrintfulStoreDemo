@@ -25,7 +25,7 @@ struct Categories: Decodable {
     }
 }
 
-struct Category: Decodable {
+struct Category: Decodable, Identifiable {
     let id: Int
     let parentId: Int
     let imageURL: String

@@ -13,8 +13,13 @@ struct CategoriesView: View {
     
     var body: some View {
         NavigationStack {
-            Text("Categories View")
+            List {
+                ForEach(categoriesVM.categories) { category in
+                    Text(category.title)
+                }
                 .navigationTitle("Categories")
+            }
+            .listStyle(.plain)
         }
         .onAppear {
             categoriesVM.getCategories()

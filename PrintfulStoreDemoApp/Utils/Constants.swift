@@ -6,3 +6,5 @@
 //
 
 import Foundation
+
+let authToken = "FA3dfYHVOHPTWb833EadtKrr6KsmIHIkNVo9LGAH"

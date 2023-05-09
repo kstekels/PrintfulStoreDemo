@@ -12,6 +12,7 @@ enum NetworkError: Error {
     case badURL
     case decodingError
     case noData
+    case noToken
 }
 
 class StoreService {
@@ -20,17 +21,21 @@ class StoreService {
     
     static let shared = StoreService()
     
-    func getCategories(completion: @escaping (Result<CategoriesResponse, NetworkError>) -> Void) {
-        guard let url = URL.urlForAllCategories() else {
+    func fetchCategories<T: Decodable>(url: URL?, authToken: String?, completion: @escaping (Result<T, NetworkError>) -> Void) {
+        guard let url = url else {
             return completion(.failure(.badURL))
         }
+        guard let authToken = authToken else {
+            return completion(.failure(.noToken))
+        }
         var request = URLRequest(url: url)
-        request.addValue("Bearer FA3dfYHVOHPTWb833EadtKrr6KsmIHIkNVo9LGAH", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer \(authToken)", forHTTPHeaderField: "Authorization")
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 return completion(.failure(.noData))
             }
-            let categoriesResponse = try? JSONDecoder().decode(CategoriesResponse.self, from: data)
+            let categoriesResponse = try? JSONDecoder().decode(T.self, from: data)
+            
             if let categoriesResponse = categoriesResponse {
                 completion(.success(categoriesResponse))
             } else {

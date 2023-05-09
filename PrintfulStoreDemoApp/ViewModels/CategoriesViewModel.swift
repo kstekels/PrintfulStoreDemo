@@ -14,10 +14,12 @@ class CategoriesViewModel: ObservableObject {
 extension CategoriesViewModel {
     
     func getCategories() {
-        StoreService.shared.getCategories { result in
+        StoreService.shared.fetchCategories(url: URL.urlForAllCategories(), authToken: authToken) { (result: Result<CategoriesResponse, NetworkError>) in
             switch result {
             case .success(let response):
-                print(response)
+                DispatchQueue.main.async {
+                    self.categories = response.result.categories
+                }
             case .failure(let error):
                 print(error)
             }
