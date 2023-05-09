@@ -13,9 +13,9 @@ struct CategoriesView: View {
     
     var body: some View {
         NavigationStack {
-            List {
+            ScrollView(showsIndicators: false) {
                 ForEach(categoriesVM.categories) { category in
-                    Text(category.title)
+                    CategoryRowItemView(category: category)
                 }
                 .navigationTitle("Categories")
             }

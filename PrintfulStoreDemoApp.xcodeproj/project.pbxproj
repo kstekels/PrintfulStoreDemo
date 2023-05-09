@@ -20,6 +20,7 @@
 		8268E08B2A0A86C600C90497 /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E08A2A0A86C600C90497 /* StoreService.swift */; };
 		8268E08D2A0A879E00C90497 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E08C2A0A879E00C90497 /* URL+Extensions.swift */; };
 		8268E08F2A0A8A2F00C90497 /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E08E2A0A8A2F00C90497 /* CategoriesViewModel.swift */; };
+		8268E0912A0A9CAB00C90497 /* CategoryRowItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E0902A0A9CAB00C90497 /* CategoryRowItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		8268E08A2A0A86C600C90497 /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
 		8268E08C2A0A879E00C90497 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		8268E08E2A0A8A2F00C90497 /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
+		8268E0902A0A9CAB00C90497 /* CategoryRowItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRowItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				8268E0782A0A7B2400C90497 /* HomeView.swift */,
 				8268E07B2A0A7C7200C90497 /* CategoriesView.swift */,
 				8268E0852A0A7EB800C90497 /* FavoriteItemsView.swift */,
+				8268E0902A0A9CAB00C90497 /* CategoryRowItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 				8268E0812A0A7CEA00C90497 /* Helpers.swift in Sources */,
 				8268E08D2A0A879E00C90497 /* URL+Extensions.swift in Sources */,
 				8268E07F2A0A7CE000C90497 /* Enumerations.swift in Sources */,
+				8268E0912A0A9CAB00C90497 /* CategoryRowItemView.swift in Sources */,
 				8268E0832A0A7CF200C90497 /* Constants.swift in Sources */,
 				8268E08F2A0A8A2F00C90497 /* CategoriesViewModel.swift in Sources */,
 			);
