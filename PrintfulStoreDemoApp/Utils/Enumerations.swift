@@ -26,3 +26,10 @@ enum TabBarTitles: String, View {
         Text(rawValue.capitalized)
     }
 }
+
+
+enum SizeOfCategoryImage: String, Decodable {
+    case small
+    case medium
+    case large
+}

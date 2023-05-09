@@ -8,10 +8,16 @@
 import SwiftUI
 
 struct CategoriesView: View {
+    
+    @ObservedObject var categoriesVM = CategoriesViewModel()
+    
     var body: some View {
         NavigationStack {
             Text("Categories View")
                 .navigationTitle("Categories")
+        }
+        .onAppear {
+            categoriesVM.getCategories()
         }
     }
 }
