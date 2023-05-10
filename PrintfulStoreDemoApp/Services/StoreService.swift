@@ -21,7 +21,7 @@ class StoreService {
     
     static let shared = StoreService()
     
-    func fetchCategories<T: Decodable>(url: URL?, authToken: String?, completion: @escaping (Result<T, NetworkError>) -> Void) {
+    func fetchData<T: Decodable>(url: URL?, authToken: String?, completion: @escaping (Result<T, NetworkError>) -> Void) {
         guard let url = url else {
             return completion(.failure(.badURL))
         }
@@ -34,9 +34,9 @@ class StoreService {
             guard let data = data, error == nil else {
                 return completion(.failure(.noData))
             }
-            let categoriesResponse = try? JSONDecoder().decode(T.self, from: data)
+            let dataResponse = try? JSONDecoder().decode(T.self, from: data)
             
-            if let categoriesResponse = categoriesResponse {
+            if let categoriesResponse = dataResponse {
                 completion(.success(categoriesResponse))
             } else {
                 completion(.failure(.decodingError))

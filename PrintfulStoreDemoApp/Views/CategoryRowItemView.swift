@@ -12,7 +12,7 @@ struct CategoryRowItemView: View {
     let category: Category
     
     var body: some View {
-        HStack{
+        HStack(alignment: .center, spacing: 25) {
             AsyncImage(url: URL(string: category.imageURL)) { image in
                 ZStack {
                     image
@@ -26,6 +26,7 @@ struct CategoryRowItemView: View {
             }
             .frame(width: 150, height: 150)
             Text(category.title)
+                .font(.system(size: 24))
             Spacer()
         }
 

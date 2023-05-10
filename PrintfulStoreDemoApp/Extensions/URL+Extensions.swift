@@ -13,4 +13,8 @@ extension URL {
          return URL(string: "https://api.printful.com/categories")
     }
     
+    static func urlForAllProducts() -> URL? {
+         return URL(string: "https://api.printful.com/products")
+    }
+    
 }

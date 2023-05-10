@@ -14,10 +14,17 @@ struct CategoriesView: View {
     var body: some View {
         NavigationStack {
             ScrollView(showsIndicators: false) {
-                ForEach(categoriesVM.categories) { category in
-                    CategoryRowItemView(category: category)
+                LazyVStack(alignment: .leading, spacing: 0) {
+                    ForEach(categoriesVM.categories) { category in
+                        NavigationLink {
+                            ProductsView()
+                        } label: {
+                            CategoryRowItemView(category: category)
+                        }
+
+                    }
+                    .navigationTitle("Categories")
                 }
-                .navigationTitle("Categories")
             }
             .listStyle(.plain)
         }

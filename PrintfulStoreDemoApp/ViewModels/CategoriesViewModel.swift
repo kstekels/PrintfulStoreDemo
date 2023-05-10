@@ -14,7 +14,7 @@ class CategoriesViewModel: ObservableObject {
 extension CategoriesViewModel {
     
     func getCategories() {
-        StoreService.shared.fetchCategories(url: URL.urlForAllCategories(), authToken: authToken) { (result: Result<CategoriesResponse, NetworkError>) in
+        StoreService.shared.fetchData(url: URL.urlForAllCategories(), authToken: authToken) { (result: Result<CategoriesResponse, NetworkError>) in
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
