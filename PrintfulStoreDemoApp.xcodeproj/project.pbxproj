@@ -24,6 +24,8 @@
 		8268E0932A0AD3CD00C90497 /* ProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E0922A0AD3CD00C90497 /* ProductsView.swift */; };
 		8268E0952A0C1A2200C90497 /* ProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E0942A0C1A2200C90497 /* ProductsViewModel.swift */; };
 		8268E0972A0C1A5900C90497 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E0962A0C1A5900C90497 /* Products.swift */; };
+		8268E09B2A0D611B00C90497 /* ProductRowItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E09A2A0D611B00C90497 /* ProductRowItemView.swift */; };
+		8268E09D2A0D650E00C90497 /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E09C2A0D650E00C90497 /* ProductDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		8268E0922A0AD3CD00C90497 /* ProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsView.swift; sourceTree = "<group>"; };
 		8268E0942A0C1A2200C90497 /* ProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewModel.swift; sourceTree = "<group>"; };
 		8268E0962A0C1A5900C90497 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
+		8268E09A2A0D611B00C90497 /* ProductRowItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRowItemView.swift; sourceTree = "<group>"; };
+		8268E09C2A0D650E00C90497 /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,8 @@
 				8268E0922A0AD3CD00C90497 /* ProductsView.swift */,
 				8268E0852A0A7EB800C90497 /* FavoriteItemsView.swift */,
 				8268E0902A0A9CAB00C90497 /* CategoryRowItemView.swift */,
+				8268E09A2A0D611B00C90497 /* ProductRowItemView.swift */,
+				8268E09C2A0D650E00C90497 /* ProductDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -235,9 +241,11 @@
 				8268E0792A0A7B2400C90497 /* HomeView.swift in Sources */,
 				8268E0882A0A82AA00C90497 /* Categories.swift in Sources */,
 				8268E0952A0C1A2200C90497 /* ProductsViewModel.swift in Sources */,
+				8268E09D2A0D650E00C90497 /* ProductDetailView.swift in Sources */,
 				8268E0862A0A7EB800C90497 /* FavoriteItemsView.swift in Sources */,
 				8268E0682A0A7A5600C90497 /* PrintfulStoreDemoAppApp.swift in Sources */,
 				8268E07C2A0A7C7200C90497 /* CategoriesView.swift in Sources */,
+				8268E09B2A0D611B00C90497 /* ProductRowItemView.swift in Sources */,
 				8268E08B2A0A86C600C90497 /* StoreService.swift in Sources */,
 				8268E0812A0A7CEA00C90497 /* Helpers.swift in Sources */,
 				8268E08D2A0A879E00C90497 /* URL+Extensions.swift in Sources */,

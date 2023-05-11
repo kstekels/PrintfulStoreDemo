@@ -21,12 +21,10 @@ struct CategoriesView: View {
                         } label: {
                             CategoryRowItemView(category: category)
                         }
-
                     }
-                    .navigationTitle("Categories")
                 }
             }
-            .listStyle(.plain)
+            .navigationTitle("Categories")
         }
         .onAppear {
             categoriesVM.getCategories()

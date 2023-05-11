@@ -26,7 +26,7 @@ struct CategoryRowItemView: View {
             }
             .frame(width: 150, height: 150)
             Text(category.title)
-                .font(.system(size: 24))
+                .font(.system(size: 20))
             Spacer()
         }
 

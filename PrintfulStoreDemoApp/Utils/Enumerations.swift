@@ -10,7 +10,8 @@ import SwiftUI
 enum TabBarIcons: String, View {
     
     case home = "house"
-    case favorite = "heart"
+    case heart = "heart"
+    case hearFill = "heart.fill"
 
     var body: some View {
         Image(systemName: rawValue)
