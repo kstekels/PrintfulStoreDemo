@@ -7,4 +7,5 @@
 
 import Foundation
 
-let authToken = "FA3dfYHVOHPTWb833EadtKrr6KsmIHIkNVo9LGAH"
+// Paste token here
+let authToken = ""
