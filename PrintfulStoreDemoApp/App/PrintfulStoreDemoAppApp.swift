@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct PrintfulStoreDemoAppApp: App {
+    
+    @StateObject private var storageDataController = StorageDataController()
+    
     var body: some Scene {
         WindowGroup {
             HomeView()
+                .environment(\.managedObjectContext, storageDataController.container.viewContext)
         }
     }
 }

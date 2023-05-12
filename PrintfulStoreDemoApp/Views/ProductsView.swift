@@ -11,13 +11,18 @@ import CoreData
 struct ProductsView: View {
     
     @ObservedObject var productsVM = ProductsViewModel()
+    @State private var isLoading: Bool = false
     let category: Category
-
+    
     var body: some View {
         NavigationStack {
             GeometryReader { reader in
                 ScrollView(showsIndicators: false) {
-                    if productsVM.isProductsAvailable {
+                    if isLoading {
+                        ProgressView()
+                            .scaleEffect(1.4)
+                            .frame(width: reader.size.width, height: reader.size.height)
+                    } else {
                         LazyVStack {
                             ForEach(productsVM.products) { product in
                                 NavigationLink {
@@ -27,17 +32,17 @@ struct ProductsView: View {
                                 }
                             }
                         }
-                    } else {
-                        ProgressView()
-                            .scaleEffect(1.5)
-                            .frame(width: reader.size.width, height: reader.size.height)
                     }
                 }
                 .navigationTitle("Products")
                 .navigationBarTitleDisplayMode(.inline)
                 .onAppear {
+                    isLoading = true
                     productsVM.getProductsBy(id: category.id)
-            }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        isLoading = false
+                    }
+                }
             }
         }
     }

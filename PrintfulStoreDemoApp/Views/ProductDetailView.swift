@@ -9,6 +9,9 @@ import SwiftUI
 
 struct ProductDetailView: View {
     
+    @Environment (\.managedObjectContext) var managedObjectContext
+    @FetchRequest (sortDescriptors: []) var favoriteProducts: FetchedResults<Favorite>
+    
     let product: Product
     @State private var isFavorit: Bool = false
     
@@ -38,10 +41,33 @@ struct ProductDetailView: View {
                     Button {
                         //MARK: - Implemet to save
                         isFavorit.toggle()
+                        if isFavorit {
+                            let favorite = Favorite(context: managedObjectContext)
+                            favorite.id = UUID()
+                            favorite.productId = Int16(product.id)
+                            favorite.categoryId = Int16(product.mainCategoryID)
+                            do {
+                                try managedObjectContext.save()
+                            } catch {
+                                print(error.localizedDescription)
+                            }
+                        } else {
+                            _ = favoriteProducts.map { product in
+                                if product.productId == self.product.id {
+                                    managedObjectContext.delete(product)
+                                    isFavorit = false
+                                }
+                                return product
+                            }
+                        }
                     } label: {
                         isFavorit ? TabBarIcons.hearFill : TabBarIcons.heart
                     }
-
+                }
+            }
+            .onAppear {
+                isFavorit = favoriteProducts.contains { favorite in
+                    favorite.productId == self.product.id
                 }
             }
         }

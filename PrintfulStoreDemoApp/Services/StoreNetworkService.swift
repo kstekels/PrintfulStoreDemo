@@ -35,7 +35,6 @@ class StoreNetworkService {
                 return completion(.failure(.noData))
             }
             let dataResponse = try? JSONDecoder().decode(T.self, from: data)
-            
             if let categoriesResponse = dataResponse {
                 completion(.success(categoriesResponse))
             } else {
