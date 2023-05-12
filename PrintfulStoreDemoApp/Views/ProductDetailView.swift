@@ -17,21 +17,45 @@ struct ProductDetailView: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 25) {
+            VStack(spacing: 15) {
+                
+                Text(product.title.capitalized)
+                    .font(.system(size: 26))
+                    .fontWeight(.bold)
+                
                 AsyncImage(url: URL(string: product.image)) { image in
                     ZStack {
                         image
                             .resizable()
                             .scaledToFit()
                             .cornerRadius(15)
-                            .padding()
+                            .padding(.horizontal)
                     }
                 } placeholder: {
                     Image(systemName: "photo")
                 }
                 .padding(.all, 6)
-                Text(product.title)
-                    .font(.system(size: 20))
+                
+                
+                
+                HStack {
+                    VStack(alignment: .leading, spacing: 4) {
+                        if let brand = product.brand {
+                            Text("Brand: \(brand.capitalized)")
+                                .font(.system(size: 18))
+                        }
+                        Text("Model: \(product.model)")
+                            .font(.system(size: 18))
+                    }
+                    Spacer()
+                }
+                .padding(.horizontal)
+                
+                
+                .padding(.horizontal)
+                Text("\(product.description)")
+                    .padding(.horizontal)
+                    .multilineTextAlignment(.leading)
                 Spacer()
             }
             .navigationTitle("Details")
