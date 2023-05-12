@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FavoriteItemsView: View {
+struct FavoriteView: View {
     var body: some View {
         NavigationStack {
             Text("Favorite Items View")
@@ -18,6 +18,6 @@ struct FavoriteItemsView: View {
 
 struct FavoriteItemsView_Previews: PreviewProvider {
     static var previews: some View {
-        FavoriteItemsView()
+        FavoriteView()
     }
 }

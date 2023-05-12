@@ -15,11 +15,11 @@ enum NetworkError: Error {
     case noToken
 }
 
-class StoreService {
+class StoreNetworkService {
     
     private init() { }
     
-    static let shared = StoreService()
+    static let shared = StoreNetworkService()
     
     func fetchData<T: Decodable>(url: URL?, authToken: String?, completion: @escaping (Result<T, NetworkError>) -> Void) {
         guard let url = url else {
