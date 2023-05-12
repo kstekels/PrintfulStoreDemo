@@ -10,7 +10,8 @@ import SwiftUI
 enum TabBarIcons: String, View {
     
     case home = "house"
-    case favorite = "heart"
+    case heart = "heart"
+    case hearFill = "heart.fill"
 
     var body: some View {
         Image(systemName: rawValue)
@@ -25,4 +26,11 @@ enum TabBarTitles: String, View {
     var body: some View {
         Text(rawValue.capitalized)
     }
+}
+
+
+enum SizeOfCategoryImage: String, Decodable {
+    case small
+    case medium
+    case large
 }

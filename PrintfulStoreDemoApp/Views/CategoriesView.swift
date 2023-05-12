@@ -8,10 +8,26 @@
 import SwiftUI
 
 struct CategoriesView: View {
+    
+    @ObservedObject var categoriesVM = CategoriesViewModel()
+    
     var body: some View {
         NavigationStack {
-            Text("Categories View")
-                .navigationTitle("Categories")
+            ScrollView(showsIndicators: false) {
+                LazyVStack(alignment: .leading, spacing: 0) {
+                    ForEach(categoriesVM.categories) { category in
+                        NavigationLink {
+                            ProductsView(category: category)
+                        } label: {
+                            CategoryRowItemView(category: category)
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Categories")
+        }
+        .onAppear {
+            categoriesVM.getCategories()
         }
     }
 }

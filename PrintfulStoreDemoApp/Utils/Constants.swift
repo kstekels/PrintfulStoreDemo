@@ -6,3 +6,6 @@
 //
 
 import Foundation
+
+// Paste token here
+let authToken = ""

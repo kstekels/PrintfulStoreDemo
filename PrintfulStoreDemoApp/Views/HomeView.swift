@@ -15,9 +15,9 @@ struct HomeView: View {
                     TabBarIcons.home
                     TabBarTitles.home
                 }
-            FavoriteItemsView()
+            FavoriteView()
                 .tabItem {
-                    TabBarIcons.favorite
+                    TabBarIcons.heart
                     TabBarTitles.favorite
                 }
         }
