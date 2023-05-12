@@ -36,7 +36,7 @@ struct ProductDetailView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        //MARK: - Implemet
+                        //MARK: - Implemet to save
                         isFavorit.toggle()
                     } label: {
                         isFavorit ? TabBarIcons.hearFill : TabBarIcons.heart

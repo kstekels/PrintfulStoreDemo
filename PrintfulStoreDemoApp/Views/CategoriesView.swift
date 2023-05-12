@@ -17,7 +17,7 @@ struct CategoriesView: View {
                 LazyVStack(alignment: .leading, spacing: 0) {
                     ForEach(categoriesVM.categories) { category in
                         NavigationLink {
-                            ProductsView()
+                            ProductsView(category: category)
                         } label: {
                             CategoryRowItemView(category: category)
                         }
