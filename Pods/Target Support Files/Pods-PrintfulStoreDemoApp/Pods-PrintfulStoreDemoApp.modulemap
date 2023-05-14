@@ -1,6 +1,0 @@
-framework module Pods_PrintfulStoreDemoApp {
-  umbrella header "Pods-PrintfulStoreDemoApp-umbrella.h"
-
-  export *
-  module * { export * }
-}
