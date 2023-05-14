@@ -18,6 +18,16 @@ enum TabBarIcons: String, View {
     }
 }
 
+enum Images: String, View {
+    case xmark = "xmark"
+    case heartCircle = "heart.circle"
+    
+    var body: some View {
+        Image(systemName: rawValue)
+            .resizable()
+            .frame(width: 40, height: 40)
+    }
+}
 
 enum TabBarTitles: String, View {
     case home = "categories"

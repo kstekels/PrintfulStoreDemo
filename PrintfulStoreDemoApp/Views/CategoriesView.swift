@@ -10,6 +10,7 @@ import SwiftUI
 struct CategoriesView: View {
     
     @ObservedObject var categoriesVM = CategoriesViewModel()
+    @State var isLoading: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -19,15 +20,20 @@ struct CategoriesView: View {
                         NavigationLink {
                             ProductsView(category: category)
                         } label: {
-                            CategoryRowItemView(category: category)
+                            CategoryRowItemView(category: category, isLoading: $isLoading)
                         }
+                        .disabled(isLoading)
                     }
                 }
             }
             .navigationTitle("Categories")
         }
         .onAppear {
+            isLoading = true
             categoriesVM.getCategories()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                isLoading = false
+            }
         }
     }
 }

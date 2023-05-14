@@ -12,7 +12,7 @@ struct ProductRowItemView: View {
     let product: Product
     
     var body: some View {
-        HStack(alignment: .center, spacing: 25) {
+        HStack(alignment: .center, spacing: 15) {
             AsyncImage(url: URL(string: product.image)) { image in
                 ZStack {
                     image
@@ -28,6 +28,7 @@ struct ProductRowItemView: View {
             VStack(alignment: .leading, spacing: 6) {
                 Text(product.title.capitalized)
                     .font(.system(size: 18))
+                    .foregroundColor(.accentColor)
             }
             Spacer()
         }

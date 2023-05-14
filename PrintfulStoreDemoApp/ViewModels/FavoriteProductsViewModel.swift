@@ -9,6 +9,8 @@ import Foundation
 
 class FavoriteProductsViewModel: ObservableObject {
     @Published var products = [Product]()
+    @Published var isProductsSaved: Bool = false
+    @Published var isLoading: Bool = true
 }
 
 extension FavoriteProductsViewModel {
@@ -20,6 +22,8 @@ extension FavoriteProductsViewModel {
                     self.products = response.result.filter { product in
                         productIds.contains(Int16(product.id))
                     }
+                    self.isProductsSaved = !self.products.isEmpty
+                    self.isLoading = false
                 }
             case .failure(let error):
                 print(error.localizedDescription)

@@ -29,9 +29,13 @@
 		8268E0A42A0E38D500C90497 /* FavoriteProduct.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8268E0A22A0E38D500C90497 /* FavoriteProduct.xcdatamodeld */; };
 		8268E0A62A0E39CE00C90497 /* StorageDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E0A52A0E39CE00C90497 /* StorageDataController.swift */; };
 		8268E0A82A0E51E000C90497 /* FavoriteProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E0A72A0E51E000C90497 /* FavoriteProductsViewModel.swift */; };
+		8268E0AA2A114A5A00C90497 /* SkeletonRowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E0A92A114A5A00C90497 /* SkeletonRowItem.swift */; };
+		8268E0AC2A115DA500C90497 /* EmptyInfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E0AB2A115DA500C90497 /* EmptyInfoScreen.swift */; };
+		BE614841D65C3A2BF5BA2586 /* Pods_PrintfulStoreDemoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBCA5A493854105BECAC88C /* Pods_PrintfulStoreDemoApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3902BC2997FE07BB9ECFC1E1 /* Pods-PrintfulStoreDemoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrintfulStoreDemoApp.debug.xcconfig"; path = "Target Support Files/Pods-PrintfulStoreDemoApp/Pods-PrintfulStoreDemoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		8268E0642A0A7A5600C90497 /* PrintfulStoreDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrintfulStoreDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8268E0672A0A7A5600C90497 /* PrintfulStoreDemoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintfulStoreDemoAppApp.swift; sourceTree = "<group>"; };
 		8268E06B2A0A7A5800C90497 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -55,6 +59,10 @@
 		8268E0A32A0E38D500C90497 /* FavoriteProduct.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoriteProduct.xcdatamodel; sourceTree = "<group>"; };
 		8268E0A52A0E39CE00C90497 /* StorageDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDataController.swift; sourceTree = "<group>"; };
 		8268E0A72A0E51E000C90497 /* FavoriteProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteProductsViewModel.swift; sourceTree = "<group>"; };
+		8268E0A92A114A5A00C90497 /* SkeletonRowItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonRowItem.swift; sourceTree = "<group>"; };
+		8268E0AB2A115DA500C90497 /* EmptyInfoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyInfoScreen.swift; sourceTree = "<group>"; };
+		CFBCA5A493854105BECAC88C /* Pods_PrintfulStoreDemoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrintfulStoreDemoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3CC313EFD5373495B5BD6B7 /* Pods-PrintfulStoreDemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrintfulStoreDemoApp.release.xcconfig"; path = "Target Support Files/Pods-PrintfulStoreDemoApp/Pods-PrintfulStoreDemoApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE614841D65C3A2BF5BA2586 /* Pods_PrintfulStoreDemoApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +82,8 @@
 			children = (
 				8268E0662A0A7A5600C90497 /* PrintfulStoreDemoApp */,
 				8268E0652A0A7A5600C90497 /* Products */,
+				ABF6717A2EEB00FEF26B5B2C /* Pods */,
+				D4C5B164DCFC536B88AF91F2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,8 +137,10 @@
 				8268E0922A0AD3CD00C90497 /* ProductsView.swift */,
 				8268E0852A0A7EB800C90497 /* FavoriteView.swift */,
 				8268E0902A0A9CAB00C90497 /* CategoryRowItemView.swift */,
+				8268E0A92A114A5A00C90497 /* SkeletonRowItem.swift */,
 				8268E09A2A0D611B00C90497 /* ProductRowItemView.swift */,
 				8268E09C2A0D650E00C90497 /* ProductDetailView.swift */,
+				8268E0AB2A115DA500C90497 /* EmptyInfoScreen.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -177,6 +190,23 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		ABF6717A2EEB00FEF26B5B2C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3902BC2997FE07BB9ECFC1E1 /* Pods-PrintfulStoreDemoApp.debug.xcconfig */,
+				D3CC313EFD5373495B5BD6B7 /* Pods-PrintfulStoreDemoApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D4C5B164DCFC536B88AF91F2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CFBCA5A493854105BECAC88C /* Pods_PrintfulStoreDemoApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -184,9 +214,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8268E0722A0A7A5800C90497 /* Build configuration list for PBXNativeTarget "PrintfulStoreDemoApp" */;
 			buildPhases = (
+				3A665921EBF534C2F8D95198 /* [CP] Check Pods Manifest.lock */,
 				8268E0602A0A7A5600C90497 /* Sources */,
 				8268E0612A0A7A5600C90497 /* Frameworks */,
 				8268E0622A0A7A5600C90497 /* Resources */,
+				4B70353D09591074C5BDCB23 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -242,6 +274,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3A665921EBF534C2F8D95198 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PrintfulStoreDemoApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4B70353D09591074C5BDCB23 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PrintfulStoreDemoApp/Pods-PrintfulStoreDemoApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PrintfulStoreDemoApp/Pods-PrintfulStoreDemoApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PrintfulStoreDemoApp/Pods-PrintfulStoreDemoApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8268E0602A0A7A5600C90497 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -252,11 +326,13 @@
 				8268E0A82A0E51E000C90497 /* FavoriteProductsViewModel.swift in Sources */,
 				8268E0952A0C1A2200C90497 /* ProductsViewModel.swift in Sources */,
 				8268E09D2A0D650E00C90497 /* ProductDetailView.swift in Sources */,
+				8268E0AA2A114A5A00C90497 /* SkeletonRowItem.swift in Sources */,
 				8268E0862A0A7EB800C90497 /* FavoriteView.swift in Sources */,
 				8268E0A42A0E38D500C90497 /* FavoriteProduct.xcdatamodeld in Sources */,
 				8268E0682A0A7A5600C90497 /* PrintfulStoreDemoAppApp.swift in Sources */,
 				8268E07C2A0A7C7200C90497 /* CategoriesView.swift in Sources */,
 				8268E09B2A0D611B00C90497 /* ProductRowItemView.swift in Sources */,
+				8268E0AC2A115DA500C90497 /* EmptyInfoScreen.swift in Sources */,
 				8268E08B2A0A86C600C90497 /* StoreNetworkService.swift in Sources */,
 				8268E0812A0A7CEA00C90497 /* Helpers.swift in Sources */,
 				8268E0A62A0E39CE00C90497 /* StorageDataController.swift in Sources */,
@@ -389,6 +465,7 @@
 		};
 		8268E0732A0A7A5800C90497 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3902BC2997FE07BB9ECFC1E1 /* Pods-PrintfulStoreDemoApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -418,6 +495,7 @@
 		};
 		8268E0742A0A7A5800C90497 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3CC313EFD5373495B5BD6B7 /* Pods-PrintfulStoreDemoApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
