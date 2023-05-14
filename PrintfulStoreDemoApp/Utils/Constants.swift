@@ -12,7 +12,7 @@ class Constants {
     static let shared = Constants()
 
     /// Auth token to runt the app
-    let authToken = "FA3dfYHVOHPTWb833EadtKrr6KsmIHIkNVo9LGAH"
+    let authToken = ""
     
     // Dimens
     let cornerRadius: CGFloat = 15
