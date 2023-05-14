@@ -17,23 +17,24 @@ struct FavoriteView: View {
     var body: some View {
         NavigationStack {
             if !favoriteProductsViewModel.isProductsSaved && !favoriteProductsViewModel.isLoading {
-                EmptyInfoScreen(message: "No products saved", image: .heartCircle)
+                EmptyInfoScreen(message: Constants.shared.noProductsSaved, image: .heartCircle)
             }
             else if favoriteProductsViewModel.isProductsSaved {
                 ScrollView(showsIndicators: false) {
                     LazyVStack {
                         ForEach(favoriteProductsViewModel.products) { product in
                             NavigationLink {
-                                ProductDetailView(onDismiss: fetchFavorites, product: product)
+                                ProductDetailView(product: product, onDismiss: fetchFavorites, isParentFavorites: true)
                             } label: {
                                 ProductRowItemView(product: product)
                             }
                         }
                     }
                 }
+                .navigationTitle(Constants.shared.favorites)
             } else {
                 ProgressView()
-                    .scaleEffect(1.5)
+                    .scaleEffect(Constants.shared.progresViewScale)
             }
         }
         .onAppear{
@@ -47,7 +48,7 @@ struct FavoriteView: View {
             return product.productId
         })
         favoriteProductsViewModel.getProductsBy(ids: favoritProdcutsIds)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        delayExecution {
             isLoading = false
         }
     }

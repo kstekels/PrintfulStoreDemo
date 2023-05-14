@@ -13,7 +13,10 @@ struct EmptyInfoScreen: View {
     let image: Images
     
     var body: some View {
-        VStack(alignment: .center, spacing: 10) {
+        VStack(
+            alignment: .center,
+            spacing: Constants.shared.spacing
+        ) {
             Text(message.capitalized)
                 .font(.title2)
             image

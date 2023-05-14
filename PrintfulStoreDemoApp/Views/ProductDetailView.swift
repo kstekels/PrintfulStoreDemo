@@ -14,17 +14,17 @@ struct ProductDetailView: View {
     @FetchRequest (sortDescriptors: []) var favoriteProducts: FetchedResults<Favorite>
     @State private var showAlert = false
     
-    var onDismiss: () -> Void
-    
     let product: Product
+    var onDismiss: () -> Void
+    let isParentFavorites: Bool
+    
     @State private var isFavorit: Bool = false
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 15) {
-                
+            VStack(spacing: Constants.shared.spacing) {
                 Text(product.title.capitalized)
-                    .font(.system(size: 26))
+                    .font(.system(size: Constants.shared.detailsViewTitleSize))
                     .fontWeight(.bold)
                 
                 AsyncImage(url: URL(string: product.image)) { image in
@@ -32,37 +32,29 @@ struct ProductDetailView: View {
                         image
                             .resizable()
                             .scaledToFit()
-                            .cornerRadius(15)
-                            .padding(.horizontal)
+                            .cornerRadius(Constants.shared.cornerRadius)
                     }
                 } placeholder: {
-                    Image(systemName: "photo")
+                    Images.photo
                 }
-                .padding(.all, 6)
-                
-                
                 
                 HStack {
-                    VStack(alignment: .leading, spacing: 4) {
+                    VStack(alignment: .leading, spacing: Constants.shared.spacing) {
                         if let brand = product.brand {
-                            Text("Brand: \(brand.capitalized)")
-                                .font(.system(size: 18))
+                            SubdetailsTextView(subdetails: Constants.shared.brand, text: brand)
                         }
-                        Text("Model: \(product.model)")
-                            .font(.system(size: 18))
+                        SubdetailsTextView(subdetails: Constants.shared.model, text: product.model)
                     }
                     Spacer()
                 }
-                .padding(.horizontal)
+                .padding(.vertical, Constants.shared.verticalPadding)
                 
-                
-                .padding(.horizontal)
                 Text("\(product.description)")
-                    .padding(.horizontal)
                     .multilineTextAlignment(.leading)
                 Spacer()
             }
-            .navigationTitle("Details")
+            .padding(.horizontal)
+            .navigationTitle(Constants.shared.details)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -77,7 +69,7 @@ struct ProductDetailView: View {
                             do {
                                 try managedObjectContext.save()
                             } catch {
-                                print(error.localizedDescription)
+                                debugPrint(error.localizedDescription)
                             }
                         } else {
                             showAlert = true
@@ -87,20 +79,22 @@ struct ProductDetailView: View {
                     }
                     .alert(isPresented: $showAlert) {
                         Alert(
-                            title: Text("Delete"),
-                            message: Text("Do you want to remove this item from favorites?"),
-                            primaryButton: .destructive(Text("Delete"), action: {
+                            title: Text(Constants.shared.delete),
+                            message: Text(Constants.shared.deleteItemMessage),
+                            primaryButton: .destructive(Text(Constants.shared.delete), action: {
                                 _ = favoriteProducts.map { product in
                                     if product.productId == self.product.id {
                                         managedObjectContext.delete(product)
                                         try? managedObjectContext.save()
                                         isFavorit = false
-                                    } 
+                                    }
                                     return product
                                 }
-                                presentationMode.wrappedValue.dismiss()
+                                if isParentFavorites {
+                                    presentationMode.wrappedValue.dismiss()
+                                }
                             }),
-                            secondaryButton: .cancel(Text("Cancel"), action: {
+                            secondaryButton: .cancel(Text(Constants.shared.cancel), action: {
                                 isFavorit.toggle()
                             })
                         )
@@ -111,7 +105,6 @@ struct ProductDetailView: View {
                 isFavorit = favoriteProducts.contains { favorite in
                     favorite.productId == self.product.id
                 }
-                print(isFavorit)
             }
             .onDisappear{
                 onDismiss()
@@ -124,7 +117,7 @@ struct ProductDetailView_Previews: PreviewProvider {
     
     static var previews: some View {
         NavigationStack {
-            ProductDetailView(onDismiss: {}, product: Product(id: 638, mainCategoryID: 42, type: "EMBROIDERY", typeName: "Hat", title: "adidas Dad Hat", brand: "adidas", model: "HA9264", image: "https://files.cdn.printful.com/o/upload/product-catalog-img/90/90cbf5ffea4c69b1753666debb614a66_l", variantCount: 1, currency: "USD", isDiscontinued: false, avgFulfillmentTime: nil, description: "This adidas dad hat is a timeless and stylish piece, perfect for any wardrobe. Plus, thanks to an adjustable snapback closure and flexible material, it has an extra comfortable fit.\n\n• Made from 100% recycled polyester\n• Unstructured\n• 6-panel, low-profile\n• One size fits all\n• Adjustable snapback closure", originCountry: "US"))
+            ProductDetailView(product: Product(id: 638, mainCategoryID: 42, type: "EMBROIDERY", typeName: "Hat", title: "adidas Dad Hat", brand: "adidas", model: "HA9264", image: "https://files.cdn.printful.com/o/upload/product-catalog-img/90/90cbf5ffea4c69b1753666debb614a66_l", variantCount: 1, currency: "USD", isDiscontinued: false, avgFulfillmentTime: nil, description: "This adidas dad hat is a timeless and stylish piece, perfect for any wardrobe. Plus, thanks to an adjustable snapback closure and flexible material, it has an extra comfortable fit.\n\n• Made from 100% recycled polyester\n• Unstructured\n• 6-panel, low-profile\n• One size fits all\n• Adjustable snapback closure", originCountry: "US"), onDismiss: {}, isParentFavorites: false)
         }
     }
 }

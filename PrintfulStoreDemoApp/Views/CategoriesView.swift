@@ -15,7 +15,7 @@ struct CategoriesView: View {
     var body: some View {
         NavigationStack {
             ScrollView(showsIndicators: false) {
-                LazyVStack(alignment: .leading, spacing: 0) {
+                LazyVStack(alignment: .leading) {
                     ForEach(categoriesVM.categories) { category in
                         NavigationLink {
                             ProductsView(category: category)
@@ -26,12 +26,12 @@ struct CategoriesView: View {
                     }
                 }
             }
-            .navigationTitle("Categories")
+            .navigationTitle(Constants.shared.categories)
         }
         .onAppear {
             isLoading = true
             categoriesVM.getCategories()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            delayExecution {
                 isLoading = false
             }
         }

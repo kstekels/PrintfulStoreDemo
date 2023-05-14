@@ -21,12 +21,9 @@ struct Product: Decodable, Identifiable {
     let model, image: String
     let variantCount: Int
     let currency: String
-//    let files: [File]
-//    let options: [ResultOption]
     let isDiscontinued: Bool
     let avgFulfillmentTime: Double?
     let description: String
-//    let techniques: [Technique]
     let originCountry: String?
 
     enum CodingKeys: String, CodingKey {
@@ -37,11 +34,9 @@ struct Product: Decodable, Identifiable {
         case title, brand, model, image
         case variantCount = "variant_count"
         case currency
-//        case files, options
         case isDiscontinued = "is_discontinued"
         case avgFulfillmentTime = "avg_fulfillment_time"
         case description
-//        case techniques
         case originCountry = "origin_country"
     }
 }

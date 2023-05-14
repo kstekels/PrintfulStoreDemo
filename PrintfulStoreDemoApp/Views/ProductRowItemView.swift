@@ -12,24 +12,11 @@ struct ProductRowItemView: View {
     let product: Product
     
     var body: some View {
-        HStack(alignment: .center, spacing: 15) {
-            AsyncImage(url: URL(string: product.image)) { image in
-                ZStack {
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .cornerRadius(15)
-                        .padding()
-                }
-            } placeholder: {
-                Image(systemName: "photo")
-            }
-            .frame(width: 150, height: 150)
-            VStack(alignment: .leading, spacing: 6) {
-                Text(product.title.capitalized)
-                    .font(.system(size: 18))
-                    .foregroundColor(.accentColor)
-            }
+        HStack(alignment: .center, spacing: Constants.shared.cornerRadius) {
+            RowItemImageView(imageURL: product.image)
+            
+            RowItemTitleView(title: product.title.capitalized, fontSize: Constants.shared.rowItemTitleFontSize)
+            
             Spacer()
         }
     }

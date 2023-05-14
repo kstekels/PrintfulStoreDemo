@@ -22,19 +22,19 @@ struct ProductsView: View {
                     if !productsVM.isContentLoading && !productsVM.isProductsReceived {
                         HStack(alignment: .center) {
                             Spacer()
-                            EmptyInfoScreen(message: "No products found", image: .xmark)
+                            EmptyInfoScreen(message: Constants.shared.noProductsFound, image: .xmark)
                             Spacer()
                         }.frame(width: reader.size.width, height: reader.size.height)
                     }
                     else if isLoading {
                         ProgressView()
-                            .scaleEffect(1.4)
+                            .scaleEffect(Constants.shared.progresViewScale)
                             .frame(width: reader.size.width, height: reader.size.height)
                     } else {
                         LazyVStack {
                             ForEach(productsVM.products) { product in
                                 NavigationLink {
-                                    ProductDetailView(onDismiss: {}, product: product)
+                                    ProductDetailView(product: product, onDismiss: {}, isParentFavorites: false)
                                 } label: {
                                     ProductRowItemView(product: product)
                                 }
@@ -42,12 +42,12 @@ struct ProductsView: View {
                         }
                     }
                 }
-                .navigationTitle("Products")
+                .navigationTitle(Constants.shared.products)
                 .navigationBarTitleDisplayMode(.inline)
                 .onAppear {
                     isLoading = true
                     productsVM.getProductsBy(id: category.id)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    delayExecution {
                         isLoading = false
                     }
                 }

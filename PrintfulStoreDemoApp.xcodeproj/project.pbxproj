@@ -31,6 +31,9 @@
 		8268E0A82A0E51E000C90497 /* FavoriteProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E0A72A0E51E000C90497 /* FavoriteProductsViewModel.swift */; };
 		8268E0AA2A114A5A00C90497 /* SkeletonRowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E0A92A114A5A00C90497 /* SkeletonRowItem.swift */; };
 		8268E0AC2A115DA500C90497 /* EmptyInfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E0AB2A115DA500C90497 /* EmptyInfoScreen.swift */; };
+		8268E0B02A11801300C90497 /* RowItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E0AF2A11801300C90497 /* RowItemImageView.swift */; };
+		8268E0B22A1180C400C90497 /* RowItemTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E0B12A1180C400C90497 /* RowItemTitleView.swift */; };
+		8268E0B42A11844F00C90497 /* SubdetailsTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E0B32A11844F00C90497 /* SubdetailsTextView.swift */; };
 		BE614841D65C3A2BF5BA2586 /* Pods_PrintfulStoreDemoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBCA5A493854105BECAC88C /* Pods_PrintfulStoreDemoApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +64,9 @@
 		8268E0A72A0E51E000C90497 /* FavoriteProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteProductsViewModel.swift; sourceTree = "<group>"; };
 		8268E0A92A114A5A00C90497 /* SkeletonRowItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonRowItem.swift; sourceTree = "<group>"; };
 		8268E0AB2A115DA500C90497 /* EmptyInfoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyInfoScreen.swift; sourceTree = "<group>"; };
+		8268E0AF2A11801300C90497 /* RowItemImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowItemImageView.swift; sourceTree = "<group>"; };
+		8268E0B12A1180C400C90497 /* RowItemTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowItemTitleView.swift; sourceTree = "<group>"; };
+		8268E0B32A11844F00C90497 /* SubdetailsTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubdetailsTextView.swift; sourceTree = "<group>"; };
 		CFBCA5A493854105BECAC88C /* Pods_PrintfulStoreDemoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrintfulStoreDemoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3CC313EFD5373495B5BD6B7 /* Pods-PrintfulStoreDemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrintfulStoreDemoApp.release.xcconfig"; path = "Target Support Files/Pods-PrintfulStoreDemoApp/Pods-PrintfulStoreDemoApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,6 +147,9 @@
 				8268E09A2A0D611B00C90497 /* ProductRowItemView.swift */,
 				8268E09C2A0D650E00C90497 /* ProductDetailView.swift */,
 				8268E0AB2A115DA500C90497 /* EmptyInfoScreen.swift */,
+				8268E0AF2A11801300C90497 /* RowItemImageView.swift */,
+				8268E0B12A1180C400C90497 /* RowItemTitleView.swift */,
+				8268E0B32A11844F00C90497 /* SubdetailsTextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -335,6 +344,8 @@
 				8268E0AC2A115DA500C90497 /* EmptyInfoScreen.swift in Sources */,
 				8268E08B2A0A86C600C90497 /* StoreNetworkService.swift in Sources */,
 				8268E0812A0A7CEA00C90497 /* Helpers.swift in Sources */,
+				8268E0B22A1180C400C90497 /* RowItemTitleView.swift in Sources */,
+				8268E0B02A11801300C90497 /* RowItemImageView.swift in Sources */,
 				8268E0A62A0E39CE00C90497 /* StorageDataController.swift in Sources */,
 				8268E08D2A0A879E00C90497 /* URL+Extensions.swift in Sources */,
 				8268E0932A0AD3CD00C90497 /* ProductsView.swift in Sources */,
@@ -342,6 +353,7 @@
 				8268E0912A0A9CAB00C90497 /* CategoryRowItemView.swift in Sources */,
 				8268E0972A0C1A5900C90497 /* Products.swift in Sources */,
 				8268E0832A0A7CF200C90497 /* Constants.swift in Sources */,
+				8268E0B42A11844F00C90497 /* SubdetailsTextView.swift in Sources */,
 				8268E08F2A0A8A2F00C90497 /* CategoriesViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
