@@ -6,15 +6,17 @@
 //
 
 import SwiftUI
+import SkeletonUI
 
-struct SkeletonRowItem: View {
+struct SkeletonRowItem<Content:View>: View {
+    
+    @ViewBuilder var content: Content
+    @Binding var isLoading: Bool
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-struct SkeletonViewForRowItem_Previews: PreviewProvider {
-    static var previews: some View {
-        SkeletonRowItem()
+        content
+            .skeleton(with: isLoading, size: CGSize(width: UIScreen.main.bounds.width / 1.1, height: 150), animated: .linear).shape(type: .rounded(.radius(15, style: .continuous)))
+            .padding(.horizontal)
+            .padding(.vertical, 6)
     }
 }

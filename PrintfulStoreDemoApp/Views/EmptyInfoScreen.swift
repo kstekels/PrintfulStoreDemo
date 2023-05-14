@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct EmptyInfoScreen: View {
+    
+    let message: String
+    let image: Images
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .center, spacing: 10) {
+            Text(message.capitalized)
+                .font(.title2)
+            image
+        }
     }
 }
 
 struct EmptyInfoScreen_Previews: PreviewProvider {
     static var previews: some View {
-        EmptyInfoScreen()
+        EmptyInfoScreen(message: "Info text here", image: .xmark)
     }
 }

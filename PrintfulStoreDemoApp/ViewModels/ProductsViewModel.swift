@@ -9,6 +9,8 @@ import Foundation
 
 class ProductsViewModel: ObservableObject {
     @Published var products = [Product]()
+    @Published var isProductsReceived: Bool = false
+    @Published var isContentLoading: Bool = true
 }
 
 extension ProductsViewModel {
@@ -19,6 +21,8 @@ extension ProductsViewModel {
             case .success(let response):
                 DispatchQueue.main.async {
                     self.products = response.result.filter({ $0.mainCategoryID == categoryID })
+                    self.isProductsReceived = !self.products.isEmpty
+                    self.isContentLoading = false
                 }
             case .failure(let error):
                 print(error.localizedDescription)
