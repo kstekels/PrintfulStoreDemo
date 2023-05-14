@@ -11,7 +11,7 @@ import Foundation
 class Constants {
     static let shared = Constants()
 
-    /// Auth token to runt the app
+    // Paste Auth token here
     let authToken = ""
     
     // Dimens
