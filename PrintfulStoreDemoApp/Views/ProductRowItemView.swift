@@ -19,6 +19,7 @@ struct ProductRowItemView: View {
             
             Spacer()
         }
+        .padding(.horizontal)
     }
 }
 
