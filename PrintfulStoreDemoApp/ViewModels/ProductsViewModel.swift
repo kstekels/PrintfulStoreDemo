@@ -16,7 +16,7 @@ class ProductsViewModel: ObservableObject {
 extension ProductsViewModel {
     
     func getProductsBy(id categoryID: Int) {
-        StoreNetworkService.shared.fetchData(url: URL.urlForAllProducts(), authToken: authToken) { (result: Result<Products, NetworkError>) in
+        StoreNetworkService.shared.fetchData(url: URL.urlForAllProducts(), authToken: Constants.shared.authToken) { (result: Result<Products, NetworkError>) in
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
@@ -25,7 +25,7 @@ extension ProductsViewModel {
                     self.isContentLoading = false
                 }
             case .failure(let error):
-                print(error.localizedDescription)
+                debugPrint(error.localizedDescription)
             }
         }
     }

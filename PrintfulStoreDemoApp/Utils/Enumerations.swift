@@ -21,6 +21,7 @@ enum TabBarIcons: String, View {
 enum Images: String, View {
     case xmark = "xmark"
     case heartCircle = "heart.circle"
+    case photo = "photo"
     
     var body: some View {
         Image(systemName: rawValue)

@@ -15,8 +15,8 @@ struct SkeletonRowItem<Content:View>: View {
     
     var body: some View {
         content
-            .skeleton(with: isLoading, size: CGSize(width: UIScreen.main.bounds.width / 1.1, height: 150), animated: .linear).shape(type: .rounded(.radius(15, style: .continuous)))
+            .skeleton(with: isLoading, size: CGSize(width: UIScreen.main.bounds.width / 1.1, height: Constants.shared.itemImageHeight), animated: .linear).shape(type: .rounded(.radius(Constants.shared.cornerRadius, style: .continuous)))
             .padding(.horizontal)
-            .padding(.vertical, 6)
+            .padding(.vertical, Constants.shared.verticalPadding)
     }
 }

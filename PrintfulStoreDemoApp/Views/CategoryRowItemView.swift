@@ -15,22 +15,10 @@ struct CategoryRowItemView: View {
     var body: some View {
         
         SkeletonRowItem(content: {
-            HStack(alignment: .center, spacing: 15) {
-                AsyncImage(url: URL(string: category.imageURL)) { image in
-                    ZStack {
-                        image
-                            .resizable()
-                            .scaledToFit()
-                            .cornerRadius(15)
-                        
-                    }
-                } placeholder: {
-                    Image(systemName: "photo")
-                }
-                .frame(width: 150, height: 150)
+            HStack(alignment: .center, spacing: Constants.shared.cornerRadius) {
+                RowItemImageView(imageURL: category.imageURL)
                 
-                Text(category.title)
-                    .font(.system(size: 20))
+                RowItemTitleView(title: category.title)
                 
                 Spacer()
             }

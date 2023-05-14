@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+/// Delay for 2s
+func delayExecution(compeltion: @escaping () -> Void) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + Constants.shared.loadingDelayTime) {
+        compeltion()
+    }
+}
