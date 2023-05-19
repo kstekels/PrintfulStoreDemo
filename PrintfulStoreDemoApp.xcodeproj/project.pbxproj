@@ -34,6 +34,7 @@
 		8268E0B02A11801300C90497 /* RowItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E0AF2A11801300C90497 /* RowItemImageView.swift */; };
 		8268E0B22A1180C400C90497 /* RowItemTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E0B12A1180C400C90497 /* RowItemTitleView.swift */; };
 		8268E0B42A11844F00C90497 /* SubdetailsTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8268E0B32A11844F00C90497 /* SubdetailsTextView.swift */; };
+		82B53BE82A17FE9C00AE1A01 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B53BE72A17FE9C00AE1A01 /* PreviewData.swift */; };
 		BE614841D65C3A2BF5BA2586 /* Pods_PrintfulStoreDemoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBCA5A493854105BECAC88C /* Pods_PrintfulStoreDemoApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		8268E0AF2A11801300C90497 /* RowItemImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowItemImageView.swift; sourceTree = "<group>"; };
 		8268E0B12A1180C400C90497 /* RowItemTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowItemTitleView.swift; sourceTree = "<group>"; };
 		8268E0B32A11844F00C90497 /* SubdetailsTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubdetailsTextView.swift; sourceTree = "<group>"; };
+		82B53BE72A17FE9C00AE1A01 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		CFBCA5A493854105BECAC88C /* Pods_PrintfulStoreDemoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrintfulStoreDemoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3CC313EFD5373495B5BD6B7 /* Pods-PrintfulStoreDemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrintfulStoreDemoApp.release.xcconfig"; path = "Target Support Files/Pods-PrintfulStoreDemoApp/Pods-PrintfulStoreDemoApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				8268E06E2A0A7A5800C90497 /* Preview Assets.xcassets */,
+				82B53BE72A17FE9C00AE1A01 /* PreviewData.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				8268E07F2A0A7CE000C90497 /* Enumerations.swift in Sources */,
 				8268E0912A0A9CAB00C90497 /* CategoryRowItemView.swift in Sources */,
 				8268E0972A0C1A5900C90497 /* Products.swift in Sources */,
+				82B53BE82A17FE9C00AE1A01 /* PreviewData.swift in Sources */,
 				8268E0832A0A7CF200C90497 /* Constants.swift in Sources */,
 				8268E0B42A11844F00C90497 /* SubdetailsTextView.swift in Sources */,
 				8268E08F2A0A8A2F00C90497 /* CategoriesViewModel.swift in Sources */,

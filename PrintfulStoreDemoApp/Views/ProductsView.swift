@@ -57,7 +57,10 @@ struct ProductsView: View {
 }
 
 struct CategoryProductsView_Previews: PreviewProvider {
+    
+    static let productDetail = PreviewData.shared.categories[1]
+    
     static var previews: some View {
-        ProductsView(category: Category(id: 1, parentId: 1, imageURL: "https://files.cdn.printful.com/o/upload/catalog_category/fb/fbf0cf796a5603666e85713ece1708a1_t?v=1680080851", catalogPosition: 1, size: .medium, title: "Men's clothing"))
+        ProductsView(category: productDetail)
     }
 }

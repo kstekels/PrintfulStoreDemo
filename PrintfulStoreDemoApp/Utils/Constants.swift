@@ -8,7 +8,8 @@
 import Foundation
 
 
-class Constants {
+final class Constants {
+    
     static let shared = Constants()
 
     // Paste Auth token here

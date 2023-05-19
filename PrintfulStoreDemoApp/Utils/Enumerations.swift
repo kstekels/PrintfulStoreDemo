@@ -40,7 +40,7 @@ enum TabBarTitles: String, View {
 }
 
 
-enum SizeOfCategoryImage: String, Decodable {
+enum SizeOfCategoryImage: String, Codable {
     case small
     case medium
     case large
