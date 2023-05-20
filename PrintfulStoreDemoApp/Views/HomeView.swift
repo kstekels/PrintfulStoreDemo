@@ -9,11 +9,11 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @State var isFirstTimeOpened = true
+    @State var isCategoryViewFirstTimeLoaded = true
     
     var body: some View {
         TabView {
-            CategoriesView(isFirstTimeLoaded: $isFirstTimeOpened)
+            CategoriesView(isFirstTimeLoaded: $isCategoryViewFirstTimeLoaded)
                 .tabItem {
                     TabBarIcons.home
                     TabBarTitles.home
