@@ -13,6 +13,11 @@ pod install
 
 4. Press "Run" Button
 
-## App Example:
-https://github.com/kstekels/PrintfulStoreDemo/assets/31929901/4f2f164a-fd8d-471f-b917-b3758c189d6d
+## App Example (Light mode):
+https://github.com/kstekels/PrintfulStoreDemo/assets/31929901/1c56001c-a377-4555-b7b5-cf4a4a1fe8f6
+
+## App Example (Dark mode):
+https://github.com/kstekels/PrintfulStoreDemo/assets/31929901/a1def827-bc41-4699-a05a-117c1b622396
+
+
 
