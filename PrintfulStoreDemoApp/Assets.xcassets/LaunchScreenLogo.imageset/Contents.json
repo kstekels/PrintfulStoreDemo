@@ -1,0 +1,22 @@
+{
+  "images" : [
+    {
+      "filename" : "LaunchScreenLogo.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "PF-Off-center stacked-Full-color white-RGB.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

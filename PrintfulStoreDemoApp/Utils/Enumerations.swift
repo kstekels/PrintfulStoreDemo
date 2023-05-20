@@ -12,9 +12,10 @@ enum TabBarIcons: String, View {
     case home = "house"
     case heart = "heart"
     case hearFill = "heart.fill"
-
+    
     var body: some View {
         Image(systemName: rawValue)
+            .foregroundColor(.red)
     }
 }
 
@@ -27,6 +28,16 @@ enum Images: String, View {
         Image(systemName: rawValue)
             .resizable()
             .frame(width: 40, height: 40)
+    }
+}
+
+enum AssetImage: String, View {
+    case launchScreenLogo = "LaunchScreenLogo"
+    
+    var body: some View {
+        Image("\(self.rawValue)")
+            .resizable()
+            .scaledToFit()
     }
 }
 

@@ -45,6 +45,7 @@ final class Constants {
     let delete = "Delete"
     let cancel = "Cancel"
     let close = "Close"
+    let createdBy = "Created by"
     
     
     //Text, messages
@@ -53,6 +54,9 @@ final class Constants {
     let deleteItemMessage = "Do you want to remove this item from favorites?"
     let confirmationOfDeletion = "Confirmation of Deletion"
     let itemHasDeletedFromStorage = "Item has deleted from a storage!"
+    
+    //Developer name
+    let developer = "Karlis Stekels"
     
     private init() {}
 }
