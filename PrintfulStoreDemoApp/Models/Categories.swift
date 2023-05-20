@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CategoriesResponse: Decodable {
+struct CategoriesResponse: Codable {
     let code: Int
     let result: Categories
     
@@ -17,7 +17,7 @@ struct CategoriesResponse: Decodable {
     }
 }
 
-struct Categories: Decodable {
+struct Categories: Codable {
     let categories: [Category]
     
     enum CodingKeys: String, CodingKey {
@@ -25,7 +25,7 @@ struct Categories: Decodable {
     }
 }
 
-struct Category: Decodable, Identifiable {
+struct Category: Codable, Identifiable {
     let id: Int
     let parentId: Int
     let imageURL: String

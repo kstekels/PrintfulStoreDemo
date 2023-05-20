@@ -8,13 +8,13 @@
 import Foundation
 
 // MARK: - Welcome
-struct Products: Decodable {
+struct Products: Codable {
     let code: Int
     let result: [Product]
 }
 
 // MARK: - Result
-struct Product: Decodable, Identifiable {
+struct Product: Codable, Identifiable {
     let id, mainCategoryID: Int
     let type, typeName, title: String
     let brand: String?
@@ -38,54 +38,5 @@ struct Product: Decodable, Identifiable {
         case avgFulfillmentTime = "avg_fulfillment_time"
         case description
         case originCountry = "origin_country"
-    }
-}
-
-// MARK: - File
-struct File: Decodable {
-    let type, title, additionalPrice: String
-    let options: [FileOption]
-
-    enum CodingKeys: String, CodingKey {
-        case type, title
-        case additionalPrice = "additional_price"
-        case options
-    }
-}
-
-// MARK: - FileOption
-struct FileOption: Decodable {
-    let id, type, title: String
-    let additionalPrice: Double
-
-    enum CodingKeys: String, CodingKey {
-        case id, type, title
-        case additionalPrice = "additional_price"
-    }
-}
-
-// MARK: - ResultOption
-struct ResultOption: Decodable {
-    let id, title, type: String
-    let values: [String: String]?
-    let additionalPrice: String
-    let additionalPriceBreakdown: [String:String]
-
-    enum CodingKeys: String, CodingKey {
-        case id, title, type, values
-        case additionalPrice = "additional_price"
-        case additionalPriceBreakdown = "additional_price_breakdown"
-    }
-}
-
-// MARK: - Technique
-struct Technique: Decodable {
-    let key, displayName: String
-    let isDefault: Bool
-
-    enum CodingKeys: String, CodingKey {
-        case key
-        case displayName = "display_name"
-        case isDefault = "is_default"
     }
 }

@@ -8,7 +8,8 @@
 import Foundation
 
 
-class Constants {
+final class Constants {
+    
     static let shared = Constants()
 
     // Paste Auth token here
@@ -25,7 +26,7 @@ class Constants {
     
     let progresViewScale: CGFloat = 1.5
     
-    let loadingDelayTime: Double = 2
+    let loadingDelayTime: Double = 1.5
     
     let textLinLimitForTitle: Int = 2
     
