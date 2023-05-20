@@ -14,8 +14,6 @@ struct RowItemTitleView: View {
     
     var body: some View {
         Text(title)
-            .font(.system(size: fontSize ?? Constants.shared.rowItemTitleFontSize))
-            .foregroundColor(.accentColor)
-            .lineLimit(Constants.shared.textLinLimitForTitle)
+            .rowItemTextView(fontSize: fontSize)
     }
 }

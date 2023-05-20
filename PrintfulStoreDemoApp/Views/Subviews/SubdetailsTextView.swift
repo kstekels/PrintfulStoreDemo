@@ -19,7 +19,7 @@ struct SubdetailsTextView: View {
     
     var body: some View {
         Text("\(subdetails): \(text)")
-            .font(.system(size: Constants.shared.subtitleFontSize))
+            .detailsTextViewStyle()
     }
 }
 

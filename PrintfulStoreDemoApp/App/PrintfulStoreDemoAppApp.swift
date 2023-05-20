@@ -14,7 +14,7 @@ struct PrintfulStoreDemoAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            LaunchScreenView()
                 .environment(\.managedObjectContext, storageDataController.container.viewContext)
         }
     }

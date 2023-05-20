@@ -23,12 +23,12 @@ struct ProductsView: View {
                             Spacer()
                             EmptyInfoScreen(message: Constants.shared.noProductsFound, image: .xmark)
                             Spacer()
-                        }.frame(width: reader.size.width, height: reader.size.height)
+                        }
+                        .frame(width: reader.size.width, height: reader.size.height)
                     }
                     else if isLoading {
                         ProgressView()
-                            .scaleEffect(Constants.shared.progresViewScale)
-                            .frame(width: reader.size.width, height: reader.size.height)
+                            .defaultStyleWithFrame(frameWidth: reader.size.width, frameHeight: reader.size.height)
                     } else {
                         LazyVStack {
                             ForEach(productsVM.products) { product in
@@ -44,13 +44,17 @@ struct ProductsView: View {
                 .navigationTitle(Constants.shared.products)
                 .navigationBarTitleDisplayMode(.inline)
                 .onAppear {
-                    isLoading = true
-                    productsVM.getProductsBy(id: category.id)
-                    delayExecution {
-                        isLoading = false
-                    }
+                    fetchProducts()
                 }
             }
+        }
+    }
+    
+    private func fetchProducts() {
+        isLoading = true
+        productsVM.getProductsBy(id: category.id)
+        delayExecution {
+            isLoading = false
         }
     }
 }

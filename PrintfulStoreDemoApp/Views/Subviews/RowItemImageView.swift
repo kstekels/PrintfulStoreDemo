@@ -14,11 +14,7 @@ struct RowItemImageView: View {
     var body: some View {
         AsyncImage(url: URL(string: imageURL)) { image in
             ZStack {
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(Constants.shared.cornerRadius)
-                
+                image.rowItemImageStyle()
             }
         } placeholder: {
             Images.photo

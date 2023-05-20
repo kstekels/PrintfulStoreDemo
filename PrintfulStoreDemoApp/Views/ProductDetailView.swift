@@ -17,6 +17,7 @@ struct ProductDetailView: View {
     let product: Product
     var onDismiss: () -> Void
     let isParentFavorites: Bool
+    @State private var isZoomed: Bool = false
     
     @State private var isFavorit: Bool = false
     
@@ -36,6 +37,12 @@ struct ProductDetailView: View {
                     }
                 } placeholder: {
                     Images.photo
+                }
+                .scaleEffect(isZoomed ? 1 : 0.8)
+                .onAppear{
+                    withAnimation(.spring(response: 0.5, dampingFraction: 0.5)) {
+                        isZoomed = true
+                    }
                 }
                 
                 HStack {
@@ -102,13 +109,17 @@ struct ProductDetailView: View {
                 }
             }
             .onAppear {
-                isFavorit = favoriteProducts.contains { favorite in
-                    favorite.productId == self.product.id
-                }
+                fetchDetails()
             }
             .onDisappear{
                 onDismiss()
             }
+        }
+    }
+    
+    private func fetchDetails() {
+        isFavorit = favoriteProducts.contains { favorite in
+            favorite.productId == self.product.id
         }
     }
 }

@@ -13,6 +13,8 @@ struct FavoriteView: View {
     @FetchRequest (sortDescriptors: []) var products: FetchedResults<Favorite>
     @ObservedObject private var favoriteProductsViewModel = FavoriteProductsViewModel()
     @State var isLoading: Bool = false
+    @State var itemsInFavorites: Int = 0
+    @State private var showConfirmationAlert = false
     
     var body: some View {
         NavigationStack {
@@ -30,11 +32,20 @@ struct FavoriteView: View {
                             }
                         }
                     }
+                    
                 }
                 .navigationTitle(Constants.shared.favorites)
             } else {
                 ProgressView()
-                    .scaleEffect(Constants.shared.progresViewScale)
+                    .defaultStyle()
+            }
+        }
+        .alert(isPresented: $showConfirmationAlert) {
+            Alert(title: Text(Constants.shared.deleted), message: Text(Constants.shared.itemHasDeletedFromStorage), dismissButton: .destructive(Text(Constants.shared.close)))
+        }
+        .onChange(of: products) { newValue in
+            if itemsInFavorites > newValue.count {
+                showConfirmationAlert = true
             }
         }
         .onAppear{
@@ -44,6 +55,7 @@ struct FavoriteView: View {
     
     private func fetchFavorites() {
         isLoading = true
+        itemsInFavorites = products.count
         let favoritProdcutsIds = products.map({ product in
             return product.productId
         })

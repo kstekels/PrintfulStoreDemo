@@ -11,7 +11,7 @@ import Foundation
 final class Constants {
     
     static let shared = Constants()
-
+    
     // Paste Auth token here
     let authToken = "FA3dfYHVOHPTWb833EadtKrr6KsmIHIkNVo9LGAH"
     
@@ -44,12 +44,19 @@ final class Constants {
     let details = "Details"
     let delete = "Delete"
     let cancel = "Cancel"
+    let close = "Close"
+    let createdBy = "Created by"
     
     
     //Text, messages
     let noProductsFound = "No products found"
     let noProductsSaved = "No products saved"
     let deleteItemMessage = "Do you want to remove this item from favorites?"
+    let deleted = "Deleted"
+    let itemHasDeletedFromStorage = "The item has been deleted from storage! ✅"
+    
+    //Developer name
+    let developer = "Karlis Stekels"
     
     private init() {}
 }
