@@ -26,7 +26,7 @@ final class Constants {
     
     let progresViewScale: CGFloat = 1.5
     
-    let loadingDelayTime: Double = 2
+    let loadingDelayTime: Double = 1.5
     
     let textLinLimitForTitle: Int = 2
     

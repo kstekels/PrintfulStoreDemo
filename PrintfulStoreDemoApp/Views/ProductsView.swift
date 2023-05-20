@@ -11,7 +11,6 @@ import CoreData
 struct ProductsView: View {
     
     @ObservedObject var productsVM = ProductsViewModel()
-    @State private var products: [Product] = []
     @State private var isLoading: Bool = false
     let category: Category
     
@@ -59,6 +58,7 @@ struct ProductsView: View {
 struct CategoryProductsView_Previews: PreviewProvider {
     
     static let productDetail = PreviewData.shared.categories[1]
+    static let products = PreviewData.shared.products
     
     static var previews: some View {
         ProductsView(category: productDetail)

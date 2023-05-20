@@ -11,6 +11,7 @@ struct CategoriesView: View {
     
     @ObservedObject var categoriesVM = CategoriesViewModel()
     @State var isLoading: Bool = false
+    @Binding var isFirstTimeLoaded: Bool
     
     var body: some View {
         NavigationStack {
@@ -29,10 +30,13 @@ struct CategoriesView: View {
             .navigationTitle(Constants.shared.categories)
         }
         .onAppear {
-            isLoading = true
-            categoriesVM.getCategories()
-            delayExecution {
-                isLoading = false
+            if isFirstTimeLoaded {
+                isLoading = true
+                categoriesVM.getCategories()
+                delayExecution {
+                    isLoading = false
+                }
+                isFirstTimeLoaded = false
             }
         }
     }
@@ -40,6 +44,6 @@ struct CategoriesView: View {
 
 struct CategoriesView_Previews: PreviewProvider {
     static var previews: some View {
-        CategoriesView()
+        CategoriesView(isFirstTimeLoaded: .constant(false))
     }
 }
