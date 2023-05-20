@@ -37,11 +37,11 @@ struct FavoriteView: View {
                 .navigationTitle(Constants.shared.favorites)
             } else {
                 ProgressView()
-                    .scaleEffect(Constants.shared.progresViewScale)
+                    .defaultStyle()
             }
         }
         .alert(isPresented: $showConfirmationAlert) {
-            Alert(title: Text(Constants.shared.confirmationOfDeletion), message: Text(Constants.shared.itemHasDeletedFromStorage), dismissButton: .destructive(Text(Constants.shared.close)))
+            Alert(title: Text(Constants.shared.deleted), message: Text(Constants.shared.itemHasDeletedFromStorage), dismissButton: .destructive(Text(Constants.shared.close)))
         }
         .onChange(of: products) { newValue in
             if itemsInFavorites > newValue.count {

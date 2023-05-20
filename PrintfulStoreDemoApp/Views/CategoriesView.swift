@@ -30,20 +30,24 @@ struct CategoriesView: View {
             .navigationTitle(Constants.shared.categories)
         }
         .onAppear {
-            if isFirstTimeLoaded {
-                isLoading = true
-                categoriesVM.getCategories()
-                delayExecution {
-                    isLoading = false
-                }
-                isFirstTimeLoaded = false
+            fetchCategories()
+        }
+    }
+    
+    private func fetchCategories() {
+        if isFirstTimeLoaded {
+            isLoading = true
+            categoriesVM.getCategories()
+            delayExecution {
+                isLoading = false
             }
+            isFirstTimeLoaded = false
         }
     }
 }
 
 struct CategoriesView_Previews: PreviewProvider {
     static var previews: some View {
-        CategoriesView(isFirstTimeLoaded: .constant(false))
+        CategoriesView(isFirstTimeLoaded: .constant(true))
     }
 }

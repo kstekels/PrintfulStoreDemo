@@ -109,13 +109,17 @@ struct ProductDetailView: View {
                 }
             }
             .onAppear {
-                isFavorit = favoriteProducts.contains { favorite in
-                    favorite.productId == self.product.id
-                }
+                fetchDetails()
             }
             .onDisappear{
                 onDismiss()
             }
+        }
+    }
+    
+    private func fetchDetails() {
+        isFavorit = favoriteProducts.contains { favorite in
+            favorite.productId == self.product.id
         }
     }
 }

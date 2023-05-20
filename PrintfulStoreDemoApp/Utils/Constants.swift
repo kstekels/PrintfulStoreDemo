@@ -52,8 +52,8 @@ final class Constants {
     let noProductsFound = "No products found"
     let noProductsSaved = "No products saved"
     let deleteItemMessage = "Do you want to remove this item from favorites?"
-    let confirmationOfDeletion = "Confirmation of Deletion"
-    let itemHasDeletedFromStorage = "Item has deleted from a storage!"
+    let deleted = "Deleted"
+    let itemHasDeletedFromStorage = "The item has been deleted from storage! ✅"
     
     //Developer name
     let developer = "Karlis Stekels"
