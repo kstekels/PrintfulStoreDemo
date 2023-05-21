@@ -8,8 +8,8 @@
 import Foundation
 
 /// Delay for 2s
-func delayExecution(compeltion: @escaping () -> Void) {
-    DispatchQueue.main.asyncAfter(deadline: .now() + Constants.shared.loadingDelayTime) {
+func delayExecution(with delayTime: Double = Constants.shared.loadingDelayTime, compeltion: @escaping () -> Void) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + delayTime) {
         compeltion()
     }
 }

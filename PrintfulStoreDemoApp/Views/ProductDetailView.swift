@@ -13,6 +13,10 @@ struct ProductDetailView: View {
     @Environment (\.managedObjectContext) var managedObjectContext
     @FetchRequest (sortDescriptors: []) var favoriteProducts: FetchedResults<Favorite>
     @State private var showAlert = false
+    @State private var isShowingNotification = false
+    @State private var isNotificationHidden = true
+    @State private var descriptionTextHidden = true
+    @State private var notification: Notification = .none
     
     let product: Product
     var onDismiss: () -> Void
@@ -38,27 +42,52 @@ struct ProductDetailView: View {
                 } placeholder: {
                     Images.photo
                 }
-                .scaleEffect(isZoomed ? 1 : 0.8)
-                .onAppear{
-                    withAnimation(.spring(response: 0.5, dampingFraction: 0.5)) {
-                        isZoomed = true
-                    }
-                }
-                
-                HStack {
-                    VStack(alignment: .leading, spacing: Constants.shared.spacing) {
-                        if let brand = product.brand {
-                            SubdetailsTextView(subdetails: Constants.shared.brand, text: brand)
+                .overlay(
+                    Group {
+                        if isShowingNotification {
+                            NotificationView(message: notificationMessage, notification: $notification)
+                                .transition(.opacity)
+                                .opacity(!isNotificationHidden ? 1 : 0)
+                                .onAppear {
+                                    withAnimation(.easeInOut(duration: 0.3)) {
+                                        isNotificationHidden = false
+                                        delayExecution {
+                                            hideNotification()
+                                            isNotificationHidden = true
+                                        }
+                                    }
+                                }
                         }
-                        SubdetailsTextView(subdetails: Constants.shared.model, text: product.model)
                     }
+                )
+                .scaleEffect(isZoomed ? 1 : 0.8)
+                Group {
+                    HStack {
+                        VStack(alignment: .leading, spacing: Constants.shared.spacing) {
+                            if let brand = product.brand {
+                                SubdetailsTextView(subdetails: Constants.shared.brand, text: brand)
+                            }
+                            SubdetailsTextView(subdetails: Constants.shared.model, text: product.model)
+                        }
+                        Spacer()
+                    }
+                    .padding(.vertical, Constants.shared.verticalPadding)
+                    
+                    Text("\(product.description)")
+                        .multilineTextAlignment(.leading)
                     Spacer()
                 }
-                .padding(.vertical, Constants.shared.verticalPadding)
-                
-                Text("\(product.description)")
-                    .multilineTextAlignment(.leading)
-                Spacer()
+                .opacity(!descriptionTextHidden ? 1 : 0)
+            }
+            .onAppear{
+                withAnimation(.spring(response: 0.5, dampingFraction: 0.5)) {
+                    isZoomed = true
+                }
+                delayExecution(with: 0.2) {
+                    withAnimation(.easeInOut(duration: 0.3)) {
+                        descriptionTextHidden = false
+                    }
+                }
             }
             .padding(.horizontal)
             .navigationTitle(Constants.shared.details)
@@ -75,6 +104,8 @@ struct ProductDetailView: View {
                             favorite.categoryId = Int16(product.mainCategoryID)
                             do {
                                 try managedObjectContext.save()
+                                notification = .save
+                                showNotification()
                             } catch {
                                 debugPrint(error.localizedDescription)
                             }
@@ -93,6 +124,8 @@ struct ProductDetailView: View {
                                     if product.productId == self.product.id {
                                         managedObjectContext.delete(product)
                                         try? managedObjectContext.save()
+                                        notification = .remove
+                                        showNotification()
                                         isFavorit = false
                                     }
                                     return product
@@ -107,6 +140,7 @@ struct ProductDetailView: View {
                         )
                     }
                 }
+                
             }
             .onAppear {
                 fetchDetails()
@@ -122,6 +156,28 @@ struct ProductDetailView: View {
             favorite.productId == self.product.id
         }
     }
+    
+    private var notificationMessage: String {
+        var msg: String = ""
+        switch notification {
+        case .save:
+            msg = Constants.shared.saved
+        case .remove:
+            msg = Constants.shared.removed
+        case .none:
+            msg = ""
+        }
+        return msg
+        
+    }
+    
+    private func showNotification() {
+        isShowingNotification = true
+    }
+    
+    private func hideNotification() {
+        isShowingNotification = false
+    }
 }
 
 struct ProductDetailView_Previews: PreviewProvider {
@@ -134,3 +190,6 @@ struct ProductDetailView_Previews: PreviewProvider {
         }
     }
 }
+
+
+
