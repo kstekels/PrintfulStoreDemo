@@ -46,6 +46,8 @@ final class Constants {
     let cancel = "Cancel"
     let close = "Close"
     let createdBy = "Created by"
+    let saved = "Saved"
+    let removed = "Removed"
     
     
     //Text, messages
