@@ -15,7 +15,7 @@ struct ProductRowItemView: View {
         HStack(alignment: .center, spacing: Constants.shared.cornerRadius) {
             RowItemImageView(imageURL: product.image)
             
-            RowItemTitleView(title: product.title.capitalized, fontSize: Constants.shared.rowItemTitleFontSize)
+            RowItemTitleView(title: product.title.capitalized.splitString()?[0] ?? "", fontSize: Constants.shared.rowItemTitleFontSize)
             
             Spacer()
         }

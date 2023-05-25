@@ -12,10 +12,10 @@ enum TabBarIcons: String, View {
     case home = "house"
     case heart = "heart"
     case hearFill = "heart.fill"
+    case share = "square.and.arrow.up"
     
     var body: some View {
         Image(systemName: rawValue)
-            .foregroundColor(.red)
     }
 }
 
