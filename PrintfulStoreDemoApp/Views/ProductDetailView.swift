@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct ProductDetailView: View {
     
@@ -25,12 +26,18 @@ struct ProductDetailView: View {
     
     @State private var isFavorit: Bool = false
     
+    @State private var isShareSheetPresented = false
+    
     var body: some View {
         ScrollView {
             VStack(spacing: Constants.shared.spacing) {
-                Text(product.title.capitalized)
-                    .font(.system(size: Constants.shared.detailsViewTitleSize))
-                    .fontWeight(.bold)
+                
+                GradientBackground(content: {
+                    Text(product.title.capitalized.splitString()?[0])
+                        .font(.system(size: Constants.shared.detailsViewTitleSize))
+                        .fontWeight(.bold)
+                        .lineLimit(1)
+                }, colors: [.white, .red], opacity: 0.5)
                 
                 AsyncImage(url: URL(string: product.image)) { image in
                     ZStack {
@@ -65,17 +72,18 @@ struct ProductDetailView: View {
                     HStack {
                         VStack(alignment: .leading, spacing: Constants.shared.spacing) {
                             if let brand = product.brand {
-                                SubdetailsTextView(subdetails: Constants.shared.brand, text: brand)
+                                SubdetailsTextView(subdetails: Constants.shared.brand, text: brand, opacity: 0.8, color: .gray)
                             }
-                            SubdetailsTextView(subdetails: Constants.shared.model, text: product.model)
+                            SubdetailsTextView(subdetails: Constants.shared.model, text: product.model, opacity: 0.4, color: .gray)
                         }
-                        Spacer()
                     }
                     .padding(.vertical, Constants.shared.verticalPadding)
                     
-                    Text("\(product.description)")
-                        .multilineTextAlignment(.leading)
-                    Spacer()
+                    TextBackgroundView(content: {
+                        Text("\(product.description)")
+                            .multilineTextAlignment(.leading)
+                            .padding(4)
+                    }, color: .gray, opacity: 0.1)
                 }
                 .opacity(!descriptionTextHidden ? 1 : 0)
             }
@@ -94,51 +102,60 @@ struct ProductDetailView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        //MARK: - Implemet to save
-                        isFavorit.toggle()
-                        if isFavorit {
-                            let favorite = Favorite(context: managedObjectContext)
-                            favorite.id = UUID()
-                            favorite.productId = Int16(product.id)
-                            favorite.categoryId = Int16(product.mainCategoryID)
-                            do {
-                                try managedObjectContext.save()
-                                notification = .save
-                                showNotification()
-                            } catch {
-                                debugPrint(error.localizedDescription)
-                            }
-                        } else {
-                            showAlert = true
+                    HStack(spacing: 6) {
+                        Button {
+                            isShareSheetPresented.toggle()
+                        } label: {
+                            TabBarIcons.share
                         }
-                    } label: {
-                        isFavorit ? TabBarIcons.hearFill : TabBarIcons.heart
-                    }
-                    .alert(isPresented: $showAlert) {
-                        Alert(
-                            title: Text(Constants.shared.delete),
-                            message: Text(Constants.shared.deleteItemMessage),
-                            primaryButton: .destructive(Text(Constants.shared.delete), action: {
-                                _ = favoriteProducts.map { product in
-                                    if product.productId == self.product.id {
-                                        managedObjectContext.delete(product)
-                                        try? managedObjectContext.save()
-                                        notification = .remove
-                                        showNotification()
-                                        isFavorit = false
+                        
+                        Button {
+                            //MARK: - Implemet to save
+                            isFavorit.toggle()
+                            if isFavorit {
+                                let favorite = Favorite(context: managedObjectContext)
+                                favorite.id = UUID()
+                                favorite.productId = Int16(product.id)
+                                favorite.categoryId = Int16(product.mainCategoryID)
+                                do {
+                                    try managedObjectContext.save()
+                                    notification = .save
+                                    showNotification()
+                                } catch {
+                                    debugPrint(error.localizedDescription)
+                                }
+                            } else {
+                                showAlert = true
+                            }
+                        } label: {
+                            (isFavorit ? TabBarIcons.hearFill : TabBarIcons.heart).foregroundColor(.red)
+                        }
+                        .alert(isPresented: $showAlert) {
+                            Alert(
+                                title: Text(Constants.shared.delete),
+                                message: Text(Constants.shared.deleteItemMessage),
+                                primaryButton: .destructive(Text(Constants.shared.delete), action: {
+                                    _ = favoriteProducts.map { product in
+                                        if product.productId == self.product.id {
+                                            managedObjectContext.delete(product)
+                                            try? managedObjectContext.save()
+                                            notification = .remove
+                                            showNotification()
+                                            isFavorit = false
+                                        }
+                                        return product
                                     }
-                                    return product
-                                }
-                                if isParentFavorites {
-                                    presentationMode.wrappedValue.dismiss()
-                                }
-                            }),
-                            secondaryButton: .cancel(Text(Constants.shared.cancel), action: {
-                                isFavorit.toggle()
-                            })
-                        )
+                                    if isParentFavorites {
+                                        presentationMode.wrappedValue.dismiss()
+                                    }
+                                }),
+                                secondaryButton: .cancel(Text(Constants.shared.cancel), action: {
+                                    isFavorit.toggle()
+                                })
+                            )
+                        }
                     }
+                    
                 }
                 
             }
@@ -147,6 +164,9 @@ struct ProductDetailView: View {
             }
             .onDisappear{
                 onDismiss()
+            }
+            .sheet(isPresented: $isShareSheetPresented) {
+                ActivityView(activityItems: [product.productDescriptionForSharing])
             }
         }
     }
@@ -178,6 +198,8 @@ struct ProductDetailView: View {
     private func hideNotification() {
         isShowingNotification = false
     }
+    
+    
 }
 
 struct ProductDetailView_Previews: PreviewProvider {
@@ -193,3 +215,18 @@ struct ProductDetailView_Previews: PreviewProvider {
 
 
 
+struct ActivityView: UIViewControllerRepresentable {
+    let activityItems: [String]
+    
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        let controller = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+        
+        controller.excludedActivityTypes = [
+            .print,
+        ]
+        
+        return controller
+    }
+    
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
+}

@@ -11,15 +11,24 @@ struct SubdetailsTextView: View {
     
     let subdetails: String
     let text: String
+    var opacity: Double
+    var color: Color
     
-    init(subdetails: String, text: String) {
+    init(subdetails: String, text: String, opacity: Double = 1, color: Color = .red) {
         self.subdetails = subdetails.capitalized
         self.text = text.capitalized
+        self.opacity = opacity
+        self.color = color
     }
     
     var body: some View {
-        Text("\(subdetails): \(text)")
-            .detailsTextViewStyle()
+        HStack {
+            Text("\(subdetails):")
+            TextBackgroundView(content: {
+                Text("\(text)")
+            }, color: color, opacity: opacity)
+        }
+        .padding(.horizontal, 6)
     }
 }
 

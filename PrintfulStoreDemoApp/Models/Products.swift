@@ -25,6 +25,15 @@ struct Product: Codable, Identifiable {
     let avgFulfillmentTime: Double?
     let description: String
     let originCountry: String?
+    
+    var productDescriptionForSharing: String {
+        return """
+        Title: \(title)\n
+        Brand: \(brand ?? "Uknown")\n
+        Model: \(model)\n
+        Description: \(description)\n
+        """
+    }
 
     enum CodingKeys: String, CodingKey {
         case id

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct EmptyInfoScreen: View {
     
+    @State var shouldShake: Bool = false
+    
     let message: String
     let image: Images
     
@@ -17,9 +19,23 @@ struct EmptyInfoScreen: View {
             alignment: .center,
             spacing: Constants.shared.spacing
         ) {
+            Spacer()
+            Spacer()
             Text(message.capitalized)
-                .font(.title2)
+                .font(.title)
+                .modifier(ShakeEffect(shouldShake: shouldShake))
+                
+            Spacer()
             image
+                .foregroundColor(shouldShake ? .red : .accentColor)
+                .modifier(ShakeEffect(shouldShake: shouldShake))
+            Spacer()
+            Spacer()
+        }
+        .onAppear{
+            withAnimation(.default) {
+                shouldShake.toggle()
+            }
         }
     }
 }
@@ -29,3 +45,5 @@ struct EmptyInfoScreen_Previews: PreviewProvider {
         EmptyInfoScreen(message: "Info text here", image: .xmark)
     }
 }
+
+
