@@ -36,6 +36,7 @@ struct ProductDetailView: View {
                     Text(product.title.capitalized.splitString()?[0])
                         .font(.system(size: Constants.shared.detailsViewTitleSize))
                         .fontWeight(.bold)
+                        .lineLimit(1)
                 }, colors: [.white, .red], opacity: 0.5)
                 
                 AsyncImage(url: URL(string: product.image)) { image in
