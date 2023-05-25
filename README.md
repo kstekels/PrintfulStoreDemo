@@ -19,6 +19,5 @@ https://github.com/kstekels/PrintfulStoreDemo/assets/31929901/ebe240da-14ee-4770
 ## App Example (Dark mode):
 https://github.com/kstekels/PrintfulStoreDemo/assets/31929901/07df486d-fff6-4adf-a053-98ca5bbdcc3e
 
-
-
-
+## updated 25.05.2023
+https://github.com/kstekels/PrintfulStoreDemo/assets/31929901/eccfa407-cd15-47d5-a432-fc11dd7af532
